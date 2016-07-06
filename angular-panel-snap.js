@@ -115,7 +115,8 @@ function akPanelGroup () {
 			fullWindow: '=',
 			keyboard: '=',
 			prevKey: '=',
-			nextKey: '='
+			nextKey: '=',
+			currentPanel: '='
 		},
 		link: function (scope) {
 			// Call init after child panels have registered with the controller
@@ -200,9 +201,15 @@ function panelGroupController ($scope, $element, $attrs, $window, $timeout, $doc
 		ctrl.threshold = angular.isDefined($scope.threshold) ? $scope.threshold : ctrl.threshold;
 		ctrl.prevKey = angular.isDefined($scope.prevKey) ? $scope.prevKey : ctrl.prevKey;
 		ctrl.nextKey = angular.isDefined($scope.nextKey) ? $scope.nextKey : ctrl.nextKey;
+		ctrl.currentPanel = angular.isDefined($scope.currentPanel) ? $scope.currentPanel: ctrl.currentPanel;
 
 		bind();
 		activatePanel(ctrl.currentPanel);
+		snapToPanel($scope.currentPanel);
+
+		$scope.$watch('currentPanel', function(){
+			snapToPanel($scope.currentPanel);
+		});
 	};
 
 	/*
