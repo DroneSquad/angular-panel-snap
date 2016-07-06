@@ -282,6 +282,7 @@ function panelGroupController ($scope, $element, $attrs, $window, $timeout, $doc
 		});
 		ctrl.panels[target].setActive(true);
 		ctrl.currentPanel = target;
+		$scope.currentPanel = target;
 
 		// TODO: call onActivate function for target
 		$rootScope.$broadcast('panelsnap:activate', {group: $scope.name });
