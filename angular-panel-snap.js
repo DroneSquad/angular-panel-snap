@@ -266,7 +266,7 @@ function panelGroupController ($scope, $element, $attrs, $window, $timeout, $doc
 		var threshold = 50;
 		$timeout.cancel(scrollTimeout);
 		scrollTimeout = $timeout(function () {
-			scrollStop(e);
+			//scrollStop(e);
 		}, threshold);
 	}
 
