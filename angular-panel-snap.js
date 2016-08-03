@@ -134,6 +134,7 @@ function panelGroupController ($scope, $element, $attrs, $window, $timeout, $doc
 
 	ctrl.panels = [];
 
+	ctrl.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 	ctrl.currentPanel = 0;
 	ctrl.scrollInterval = 0;
 	ctrl.scrollOffset = 0;
@@ -266,7 +267,9 @@ function panelGroupController ($scope, $element, $attrs, $window, $timeout, $doc
 		var threshold = 50;
 		$timeout.cancel(scrollTimeout);
 		scrollTimeout = $timeout(function () {
-			//scrollStop(e);
+			if (!ctrl.isIOS) {
+				scrollStop(e);
+			}
 		}, threshold);
 	}
 
